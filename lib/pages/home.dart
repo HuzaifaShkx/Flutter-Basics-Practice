@@ -18,16 +18,16 @@ class _homepageState extends State<homepage> {
   void initState() {
       // TODO: implement initState
       super.initState();
-      getData();
+     // getData();
     }
-    getData() async {
+ /*   getData() async {
       var res = await http.get(abc);
       print(res.body);
       data=jsonDecode(res.body);
       setState(() {
               
             });
-    }
+    }*/
 
   Widget build(BuildContext context) {
     return Scaffold(
