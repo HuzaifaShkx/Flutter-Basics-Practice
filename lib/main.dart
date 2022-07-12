@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tutorial_2/pages/home.dart';
+import 'package:tutorial_2/pages/homepage_with_fb.dart';
 import 'package:tutorial_2/pages/login_page.dart';
 import 'package:tutorial_2/utils/Constants.dart';
 Future main() async{
@@ -19,7 +20,7 @@ Future main() async{
         '/home': (context) => homepage(),
       },
     home: Constants.prefs?.getBool("loggedIn")==true
-    ?homepage()
+    ?homepageFB()
     :LoginPage(),
     theme: ThemeData(
       primarySwatch:Colors.purple, 
