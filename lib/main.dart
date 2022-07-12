@@ -1,9 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tutorial_2/pages/home.dart';
 import 'package:tutorial_2/pages/login_page.dart';
-void main(){
+import 'package:tutorial_2/utils/Constants.dart';
+Future main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Constants.prefs=await SharedPreferences.getInstance();
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     title: "Awesome App",
-    home: LoginPage(),
+
+    initialRoute: '/',
+      routes: {
+        // When navigating to the "/" route, build the FirstScreen widget.
+        '/login': (context) => LoginPage(),
+        // When navigating to the "/second" route, build the SecondScreen widget.
+        '/home': (context) => homepage(),
+      },
+    home: Constants.prefs?.getBool("loggedIn")==true
+    ?homepage()
+    :LoginPage(),
     theme: ThemeData(
       primarySwatch:Colors.purple, 
     ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import "package:http/http.dart" as http;
 import '../drawer.dart';
-import 'dart:convert';
+import '../utils/Constants.dart';
+import 'login_page.dart';
 class homepage extends StatefulWidget {
   @override
   State<homepage> createState() => _homepageState();
@@ -34,6 +34,12 @@ class _homepageState extends State<homepage> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
           title: Text("Awesome App"),
+          actions: [
+            IconButton(icon:Icon(Icons.exit_to_app),onPressed: (){
+              Constants.prefs?.setBool("loggedIn", false);
+              Navigator.pushReplacementNamed(context, "/login");
+            },),
+          ],
       ),
       body:Padding(
         padding: const EdgeInsets.all(10.0),
